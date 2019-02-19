@@ -46,7 +46,7 @@
 //!# fn main() { }
 //! ```
 
-use crate::codec;
+use parity_codec as codec;
 use crate::rstd::vec::Vec;
 #[doc(hidden)]
 pub use crate::rstd::borrow::Borrow;

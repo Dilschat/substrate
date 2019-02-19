@@ -18,8 +18,8 @@
 //! `decl_storage` macro transformation
 // end::description[]
 
-use srml_support_procedural_tools::syn_ext as ext;
-use srml_support_procedural_tools::{generate_crate_access, generate_hidden_includes, clean_type_string};
+use substrate_storage_procedural_tools::syn_ext as ext;
+use substrate_storage_procedural_tools::{generate_crate_access, generate_hidden_includes, clean_type_string};
 
 use proc_macro::TokenStream;
 use proc_macro2::TokenStream as TokenStream2;
@@ -64,10 +64,10 @@ pub fn decl_storage_impl(input: TokenStream) -> TokenStream {
 	} = def;
 	let hidden_crate_name = hidden_crate.map(|rc| rc.ident.content).map(|i| i.to_string())
 		.unwrap_or_else(|| "decl_storage".to_string());
-	let scrate = generate_crate_access(&hidden_crate_name, "srml-support");
+	let scrate = generate_crate_access(&hidden_crate_name, "substrate-storage");
 	let scrate_decl = generate_hidden_includes(
 		&hidden_crate_name,
-		"srml-support",
+		"substrate-storage",
 	);
 
 	let (
