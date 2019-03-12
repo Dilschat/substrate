@@ -1,0 +1,30 @@
+[package]
+name = "srml-state-channel"
+version = "0.1.0"
+authors = ["Dilshat Salikhov <dilschat@yandex.ru>"]
+edition = "2018"
+
+[dependencies]
+hex-literal = "0.1.0"
+serde = { version = "1.0", optional = true }
+parity-codec = { version = "3.1", default-features = false }
+srml-support = { path = "../support", default-features = false }
+system = { package = "srml-system", path = "../system", default-features = false }
+balances = { package = "srml-balances", path = "../balances", default-features = false }
+sha2 = "0.8.0"
+
+[dev-dependencies]
+sr-io = { path = "../../core/sr-io" }
+substrate-primitives = { path = "../../core/primitives" }
+sr-primitives = { path = "../../core/sr-primitives" }
+
+[features]
+default = ["std"]
+std = [
+	"serde",
+	"parity-codec/std",
+	"sr-primitives/std",
+	"srml-support/std",
+	"system/std",
+	"balances/std",
+]
